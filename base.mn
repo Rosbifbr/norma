@@ -1,5 +1,5 @@
 // HELPERS
-// Usage tip for vim: select numbers in visual mode then press ctrl- a for auto increment
+// Usage tip for vim - select numbers in visual mode then press ctrl- a for auto increment
 // Rodrigo Ourique, Lucas Boeira
 
 // limpa variável
@@ -109,15 +109,15 @@ operation snd(A,B,C,D){
 //Manual implementation
 //a = a*b (non destructive)
 operation times(A,B,C,D){
-	1: do load(D,B,C) goto 2
-	2: do dec D goto 3
+	1: do load(D,A,C) goto 2
+	2: do clear(A) goto 3 
 	3: if zero D then goto 666 else goto 4 
-	4: do soma(A,B,C) goto 5 
+	4: do soma(A,B,C) goto 5
 	5: do dec D goto 3 
 }
 
 main {
-	1: do add A 5 goto 2
-	2: do add B 3 goto 3
+	1: do add A 3 goto 2
+	2: do add B 5 goto 3
 	3: do times(A,B,C,D) goto 4
 }
