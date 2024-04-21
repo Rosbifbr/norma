@@ -1,0 +1,49 @@
+operation clear(A){
+ 1: if zero A then goto 0 else goto 2
+ 2: do dec A goto 1
+}
+
+operation sum(A,B){
+  1: if zero B then goto 0 else goto 2
+  2: do dec B goto 3
+  3: do inc A goto 1
+}
+
+operation load(A,B){
+  1: do clear(A) goto 2
+  2: do sum(A,B) goto 0
+}
+
+test divBy2(A,C){
+  1: do load(C,A) goto 2
+  2: if zero C then goto true else goto 3
+  3: do dec C goto 4
+  4: do inc A goto 5
+  5: if zero C then goto false else goto 6
+  6: do inc A goto 7
+  7: do dec C goto 2
+}
+
+test divBy3(A,C){
+  1: do load(C,A) goto 2
+  2: if zero C then goto true else goto 3
+  3: do dec C goto 4
+  4: do inc A goto 5
+  5: if zero C then goto false else goto 6
+  6: do inc A goto 7
+  7: do dec C goto 8
+  8: if zero C then goto false else goto 9
+  9: do dec C goto 10
+ 10: do inc A goto 2
+}
+
+// Y = 1 se X é múltiplo de 2, 2 se X não é múltiplo de 2 mas é múltiplo de 3,
+// 0 caso contrário
+
+main {
+    1: if divBy2(X,Aux) then goto 3 else goto 4
+    2: do inc Y goto 3
+    3: do inc Y goto 0
+    4: if divBy3(X,Aux) then goto 2 else goto 0
+}
+
